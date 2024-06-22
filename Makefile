@@ -1,5 +1,8 @@
 .PHONY: test
 
+include ./conf/local.env
+export
+
 test:
 	go test ./... -v
 
