@@ -8,10 +8,12 @@ package main
 
 import (
 	"context"
-	"log"
+	"flag"
+	"log/slog"
 	"os"
 	"os/signal"
 
+	"github.com/anchorage-store/anchorage/clog"
 	"github.com/sethvargo/go-envconfig"
 )
 
@@ -25,8 +27,14 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
 
-	var c config
+	slog.SetDefault(slog.New(clog.NewHandler(os.Stderr, "user", nil)))
+
+	var (
+		c config
+		_ = flag.Bool("migrate", false, "--migrate=true")
+	)
 	if err := envconfig.Process(ctx, &c); err != nil {
-		log.Fatal(err)
+		slog.Error("error processing env", "err", err)
+		os.Exit(1)
 	}
 }
