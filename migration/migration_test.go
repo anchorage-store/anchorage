@@ -6,10 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/anchorage-store/anchorage/migration"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/anchorage-store/anchorage/migration"
 )
 
 //go:embed test_migrations/*

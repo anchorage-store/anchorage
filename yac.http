@@ -1,0 +1,5 @@
+### health check
+GET http://localhost:4444/healthz
+
+?? status == 200
+?? body uptime exists

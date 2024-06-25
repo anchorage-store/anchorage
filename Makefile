@@ -8,3 +8,6 @@ test:
 
 usr:
 	go run ./cmd/usrhttpd
+
+usr-migrate:
+	go run ./cmd/usrhttpd -migrate=true
