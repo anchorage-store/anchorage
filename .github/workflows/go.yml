@@ -22,6 +22,8 @@ jobs:
       run: go test -v ./...
 
   lint:
+    runs-on: ubuntu-latest
+    steps:
     - name: Golangci-lint
       uses: golangci/golangci-lint-action@v6.0.1
             
